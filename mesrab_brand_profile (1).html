@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MESRAB ROASTERY — Brand Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Tenor+Sans&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --beige: #F5F0E8;
+    --beige-dark: #EDE6D8;
+    --black: #1C1A18;
+    --brown: #2E2820;
+    --gold: #C4A882;
+    --gold-light: #D4BC9A;
+    --gold-dark: #9A7D5A;
+    --white: #FEFCF8;
+    --text-muted: #6B5F52;
+    --divider: rgba(196, 168, 130, 0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+
+  body {
+    font-family: 'Noto Naskh Arabic', serif;
+    background: var(--beige);
+    color: var(--black);
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.2s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    opacity: 0.6;
+  }
+
+  /* Navigation dots */
+  .nav-dots {
+    position: fixed;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold-dark);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .nav-dot.active { opacity: 1; transform: scale(1.5); }
+  .nav-dot:hover { opacity: 0.7; }
+
+  /* Progress bar */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    z-index: 200;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* Slide base */
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ─── SLIDE 1: COVER ─── */
+  .slide-cover {
+    background: var(--black);
+    flex-direction: column;
+  }
+
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(196,168,130,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(196,168,130,0.04) 0%, transparent 50%);
+  }
+
+  .cover-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px;
+  }
+
+  .cover-side-bar {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 38%;
+    background: linear-gradient(135deg, #252018 0%, #1A1612 100%);
+    border-left: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .cover-leopard-wrap {
+    position: absolute;
+    right: 0; top: -5%;
+    width: 38%;
+    height: 110%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover-leopard-img {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.55;
+    mix-blend-mode: luminosity;
+    filter: contrast(1.1) brightness(0.9);
+  }
+
+  .cover-leopard-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to left, transparent 30%, #252018 100%);
+  }
+
+  .cover-brand-tag {
+    position: absolute;
+    top: 48px;
+    right: 48px;
+    text-align: right;
+  }
+  .cover-brand-tag .en-name {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.9;
+    line-height: 1.8;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 10;
+    width: 55%;
+    margin-right: auto;
+    padding: 0 80px 0 120px;
+  }
+
+  .cover-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .cover-label::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .cover-ar-title {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(56px, 7vw, 88px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    direction: rtl;
+  }
+
+  .cover-en-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .cover-divider {
+    width: 64px; height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 32px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15px;
+    color: rgba(245,240,232,0.45);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+
+  .cover-bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 120px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .cover-bottom-line {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  .cover-bottom-text {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.4;
+    text-transform: uppercase;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    right: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+  }
+  .scroll-indicator span {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.2); }
+  }
+
+  /* ─── SLIDE 2: WHO WE ARE ─── */
+  .slide-about {
+    background: var(--beige);
+    align-items: stretch;
+  }
+
+  .about-left {
+    width: 42%;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .about-left-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    filter: saturate(0.3) contrast(1.1);
+  }
+
+  .about-left-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(28,26,24,0.4) 0%, rgba(28,26,24,0.85) 100%);
+  }
+
+  .about-left-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 48px;
+  }
+
+  .slide-number-large {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.08;
+    line-height: 1;
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    font-style: italic;
+  }
+
+  .about-logo-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+
+  .about-logo-en {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .about-logo-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    direction: rtl;
+  }
+
+  .about-right {
+    flex: 1;
+    padding: 80px 100px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold-dark);
+    opacity: 0.6;
+  }
+
+  .section-title-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    text-align: right;
+  }
+
+  .section-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gold-dark);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  .gold-rule {
+    width: 48px; height: 1px;
+    background: var(--gold);
+    margin: 0 0 40px auto;
+  }
+
+  .section-body {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 17px;
+    line-height: 2.1;
+    color: var(--text-muted);
+    font-weight: 400;
+    text-align: right;
+    max-width: 520px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  /* ─── SLIDE 3: OFFERINGS ─── */
+  .slide-offerings {
+    background: var(--white);
+    flex-direction: column;
+    position: relative;
+  }
+
+  .offerings-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: var(--black);
+    overflow: hidden;
+  }
+
+  .offerings-header-imgs {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .offerings-header-imgs img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: saturate(0.3);
+  }
+
+  .offerings-header-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(28,26,24,0.3) 0%, rgba(28,26,24,0.95) 100%);
+  }
+
+  .offerings-title-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    text-align: center;
+    z-index: 10;
+  }
+
+  .offerings-title-over .section-label {
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .offerings-title-over .section-label::after,
+  .offerings-title-over .section-label::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .offerings-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+    direction: rtl;
+  }
+
+  .offerings-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .offerings-cards-wrap {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 56%;
+    padding: 0 80px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .offerings-cards {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+
+  .offering-card {
+    background: var(--white);
+    border: 1px solid var(--divider);
+    padding: 28px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offering-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+
+  .offering-card:hover::before { transform: scaleX(1); }
+  .offering-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(28,26,24,0.08);
+    border-color: rgba(196,168,130,0.5);
+  }
+
+  .offering-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .offering-text {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 13px;
+    color: var(--brown);
+    line-height: 1.6;
+    direction: rtl;
+    font-weight: 500;
+  }
+
+  /* ─── SLIDE 4: BEANS ─── */
+  .slide-beans {
+    background: var(--black);
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .beans-left {
+    width: 45%;
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .beans-origin-tag {
+    position: absolute;
+    top: 48px;
+    left: 80px;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  .beans-title-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    text-align: right;
+    margin-bottom: 8px;
+    direction: rtl;
+  }
+
+  .beans-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--gold);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .beans-category {
+    margin-bottom: 32px;
+  }
+
+  .beans-cat-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    opacity: 0.6;
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(196,168,130,0.15);
+  }
+
+  .beans-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .bean-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    direction: rtl;
+  }
+
+  .bean-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .bean-name {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15px;
+    color: rgba(245,240,232,0.75);
+    font-weight: 400;
+    direction: rtl;
+  }
+
+  .beans-right {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  .bean-card {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .bean-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.5) brightness(0.7);
+    transition: all 0.5s ease;
+  }
+
+  .bean-card:hover img {
+    filter: saturate(0.8) brightness(0.85);
+    transform: scale(1.05);
+  }
+
+  .bean-card-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 16px 16px;
+    background: linear-gradient(to top, rgba(28,26,24,0.9) 0%, transparent 100%);
+    direction: rtl;
+  }
+
+  .bean-card-name {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    direction: rtl;
+  }
+
+  .bean-card-detail {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 11px;
+    color: var(--gold-light);
+    opacity: 0.8;
+    direction: rtl;
+  }
+
+  /* ─── SLIDE 5: BOOTH ─── */
+  .slide-booth {
+    background: var(--beige-dark);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .booth-top {
+    height: 12%;
+    display: flex;
+    align-items: center;
+    padding: 0 100px;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .booth-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .booth-number-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--gold-dark);
+    font-style: italic;
+    opacity: 0.5;
+    letter-spacing: 2px;
+  }
+
+  .booth-main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2px;
+    padding: 2px;
+  }
+
+  .booth-cell {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .booth-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: saturate(0.6);
+  }
+
+  .booth-cell:hover img {
+    filter: saturate(0.9);
+    transform: scale(1.03);
+  }
+
+  .booth-cell.center {
+    grid-row: 1 / 3;
+    grid-column: 2;
+  }
+
+  .booth-overlay-title {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    text-align: right;
+    direction: rtl;
+  }
+
+  .booth-title-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    direction: rtl;
+  }
+
+  .booth-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    font-style: italic;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  }
+
+  /* ─── SLIDE 6: PACKAGES ─── */
+  .slide-packages {
+    background: var(--black);
+    flex-direction: column;
+    padding: 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .packages-bg-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(196,168,130,0.06) 0%, transparent 60%);
+  }
+
+  .packages-header {
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .packages-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .packages-title-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 700;
+    color: var(--white);
+    direction: rtl;
+    margin-bottom: 4px;
+  }
+
+  .packages-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    align-items: stretch;
+  }
+
+  .pkg-card {
+    border: 1px solid rgba(196,168,130,0.15);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: default;
+    background: rgba(255,255,255,0.02);
+    direction: rtl;
+  }
+
+  .pkg-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .pkg-card:hover::before { opacity: 1; }
+  .pkg-card:hover {
+    border-color: rgba(196,168,130,0.35);
+    background: rgba(255,255,255,0.04);
+    transform: translateY(-2px);
+  }
+
+  .pkg-card.featured {
+    border-color: rgba(196,168,130,0.4);
+    background: rgba(196,168,130,0.05);
+  }
+  .pkg-card.featured::before { opacity: 0.6; }
+
+  .pkg-tier {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .pkg-price-wrap {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(196,168,130,0.12);
+  }
+
+  .pkg-price-label {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 12px;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+
+  .pkg-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+    font-style: italic;
+  }
+
+  .pkg-price-sar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 14px;
+    color: var(--gold-light);
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  .pkg-name-ar {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 24px;
+    direction: rtl;
+  }
+
+  .pkg-features {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pkg-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    direction: rtl;
+  }
+
+  .pkg-feature-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.5;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .pkg-feature-text {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 13px;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.6;
+    direction: rtl;
+  }
+
+  .pkg-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--black);
+    background: var(--gold);
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  /* ─── SLIDE 7: CONTACT ─── */
+  .slide-contact {
+    background: var(--beige);
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .contact-left {
+    width: 50%;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .contact-left-leopard {
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 70%;
+    opacity: 0.06;
+    filter: invert(1);
+  }
+
+  .contact-left-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: var(--gold);
+    opacity: 0.05;
+    line-height: 1;
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    font-style: italic;
+  }
+
+  .contact-brand-main {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--white);
+    direction: rtl;
+    text-align: right;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .contact-brand-sub {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 48px;
+    opacity: 0.7;
+  }
+
+  .contact-tagline {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 15px;
+    color: rgba(245,240,232,0.4);
+    text-align: right;
+    direction: rtl;
+    line-height: 1.9;
+    max-width: 300px;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .contact-right {
+    flex: 1;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 48px;
+    direction: rtl;
+  }
+
+  .contact-section-label {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    color: var(--black);
+    direction: rtl;
+    text-align: right;
+    margin-bottom: 48px;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .contact-item:last-child { border-bottom: none; }
+
+  .contact-item-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .contact-item-value {
+    font-family: 'Noto Naskh Arabic', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--black);
+    direction: rtl;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .contact-item-value.ltr {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-style: italic;
+    direction: ltr;
+  }
+
+  .contact-cta {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 32px;
+    background: var(--black);
+    color: var(--gold-light);
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+
+  .contact-cta:hover {
+    background: transparent;
+    border-color: var(--black);
+    color: var(--black);
+  }
+
+  .contact-cta-arrow {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+  }
+  .contact-cta:hover .contact-cta-arrow { transform: translateX(-4px); }
+
+  /* Animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; }
+
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+  .stagger-6 { transition-delay: 0.6s; }
+
+  /* Responsive tweaks */
+  @media (max-width: 1200px) {
+    .cover-content { padding: 0 40px 0 60px; }
+    .about-right { padding: 60px 60px 60px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav-dots" id="navDots">
+  <div class="nav-dot active" data-slide="0" onclick="goToSlide(0)" title="الغلاف"></div>
+  <div class="nav-dot" data-slide="1" onclick="goToSlide(1)" title="من نحن"></div>
+  <div class="nav-dot" data-slide="2" onclick="goToSlide(2)" title="ما نقدمه"></div>
+  <div class="nav-dot" data-slide="3" onclick="goToSlide(3)" title="المحاصيل"></div>
+  <div class="nav-dot" data-slide="4" onclick="goToSlide(4)" title="البوث"></div>
+  <div class="nav-dot" data-slide="5" onclick="goToSlide(5)" title="الباقات"></div>
+  <div class="nav-dot" data-slide="6" onclick="goToSlide(6)" title="تواصل"></div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 1 — COVER
+══════════════════════════════════════════════ -->
+<section class="slide slide-cover" id="slide-0">
+  <div class="cover-texture"></div>
+  <div class="cover-grain"></div>
+
+  <div class="cover-side-bar"></div>
+
+  <div class="cover-leopard-wrap">
+    <img class="cover-leopard-img"
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3C/svg%3E"
+      onerror="this.style.display='none'"
+      alt="Leopard" />
+    <div class="cover-leopard-overlay"></div>
+    <!-- Leopard SVG approximation -->
+    <svg viewBox="0 0 300 500" style="position:absolute;width:80%;height:90%;opacity:0.25;fill:var(--gold-light);" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="150" cy="180" rx="55" ry="70" opacity="0.6"/>
+      <ellipse cx="150" cy="320" rx="65" ry="100" opacity="0.5"/>
+      <ellipse cx="150" cy="100" rx="35" ry="40" opacity="0.7"/>
+      <ellipse cx="100" cy="400" rx="20" ry="60" opacity="0.4"/>
+      <ellipse cx="200" cy="400" rx="20" ry="60" opacity="0.4"/>
+      <ellipse cx="145" cy="460" rx="8" ry="40" opacity="0.3"/>
+      <circle cx="165" cy="88" r="6" opacity="0.4"/>
+      <circle cx="135" cy="88" r="6" opacity="0.4"/>
+      <circle cx="130" cy="160" r="4" opacity="0.3"/>
+      <circle cx="170" cy="155" r="4" opacity="0.3"/>
+      <circle cx="140" cy="200" r="5" opacity="0.3"/>
+      <circle cx="160" cy="210" r="4" opacity="0.3"/>
+      <circle cx="120" cy="240" r="6" opacity="0.3"/>
+      <circle cx="180" cy="250" r="5" opacity="0.3"/>
+      <circle cx="135" cy="280" r="4" opacity="0.3"/>
+      <circle cx="165" cy="275" r="5" opacity="0.3"/>
+      <circle cx="148" cy="130" r="3" opacity="0.4"/>
+      <circle cx="158" cy="135" r="3" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="cover-brand-tag">
+    <div class="en-name">MESRAB ROASTERY</div>
+    <div class="en-name" style="font-size:9px;opacity:0.5;letter-spacing:3px;">مسراب</div>
+  </div>
+
+  <div class="cover-content">
+    <div class="cover-label fade-in-up">Brand Profile</div>
+    <div class="cover-ar-title fade-in-up stagger-1">مسـراب</div>
+    <div class="cover-en-title fade-in-up stagger-2">MESRAB</div>
+    <div class="cover-divider fade-in stagger-3"></div>
+    <div class="cover-subtitle fade-in-up stagger-4">محمّصة قهوة مختصة — كيترنق متنقل للفعاليات</div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-bottom-line"></div>
+    <div class="cover-bottom-text">2024 — Specialty Coffee</div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 2 — WHO WE ARE
+══════════════════════════════════════════════ -->
+<section class="slide slide-about" id="slide-1">
+  <div class="about-left">
+    <!-- Using gradient as stand-in for photo -->
+    <div style="width:100%;height:100%;background:linear-gradient(160deg,#2a2318 0%,#1a1612 60%,#0f0d0b 100%);"></div>
+    <div class="about-left-overlay"></div>
+    <div class="about-left-content">
+      <div class="slide-number-large">02</div>
+      <div class="about-logo-stack fade-in-up">
+        <div class="about-logo-en">MESRAB ROASTERY</div>
+        <div class="about-logo-ar">مسـ</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="section-label fade-in-up">من نحن — About</div>
+    <div class="section-title-ar fade-in-up stagger-1">من نحن</div>
+    <div class="section-title-en fade-in-up stagger-2">Who We Are</div>
+    <div class="gold-rule fade-in stagger-2"></div>
+    <p class="section-body fade-in-up stagger-3">
+      مسراب هو براند قهوة مختصة وكيترنق متنقل يقدّم تجربة قهوة استثنائية في الفعاليات والمعارض والمناسبات، من خلال تقديم احترافي وتجهيز أنيق يضيف لمسة مميزة لأي فعالية.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 3 — OFFERINGS
+══════════════════════════════════════════════ -->
+<section class="slide slide-offerings" id="slide-2">
+  <div class="offerings-header">
+    <div class="offerings-header-imgs">
+      <div style="background:linear-gradient(135deg,#1a1612,#2a2318);"></div>
+      <div style="background:linear-gradient(135deg,#2a2318,#1a1612);"></div>
+      <div style="background:linear-gradient(135deg,#1a1612,#0f0d0b);"></div>
+    </div>
+    <div class="offerings-header-overlay"></div>
+    <div class="offerings-title-over fade-in-up">
+      <div class="section-label" style="color:var(--gold);justify-content:center;">
+        <span style="display:block;width:32px;height:1px;background:var(--gold);opacity:0.6;"></span>
+        ما نقدمه
+        <span style="display:block;width:32px;height:1px;background:var(--gold);opacity:0.6;"></span>
+      </div>
+      <div class="offerings-ar">ماذا يقدم مسراب؟</div>
+      <div class="offerings-en">What We Offer</div>
+    </div>
+  </div>
+
+  <div class="offerings-cards-wrap">
+    <div class="offerings-cards">
+      <div class="offering-card fade-in-up stagger-1">
+        <div class="offering-icon">☕</div>
+        <div class="offering-text">قهوة مختصة<br><span style="opacity:0.5;font-size:11px;">(قهوة اليوم، V60)</span></div>
+      </div>
+      <div class="offering-card fade-in-up stagger-2">
+        <div class="offering-icon">🫘</div>
+        <div class="offering-text">محاصيل قهوة<br><span style="opacity:0.5;font-size:11px;">خاصة بمسراب</span></div>
+      </div>
+      <div class="offering-card fade-in-up stagger-3">
+        <div class="offering-icon">🍵</div>
+        <div class="offering-text">مشروبات<br><span style="opacity:0.5;font-size:11px;">الماتشا</span></div>
+      </div>
+      <div class="offering-card fade-in-up stagger-4">
+        <div class="offering-icon">🍮</div>
+        <div class="offering-text">حلويات<br><span style="opacity:0.5;font-size:11px;">مختارة</span></div>
+      </div>
+      <div class="offering-card fade-in-up stagger-5">
+        <div class="offering-icon">🚐</div>
+        <div class="offering-text">كيترنق متنقل<br><span style="opacity:0.5;font-size:11px;">للفعاليات</span></div>
+      </div>
+      <div class="offering-card fade-in-up stagger-6">
+        <div class="offering-icon">✦</div>
+        <div class="offering-text">تقديم احترافي<br><span style="opacity:0.5;font-size:11px;">وتجهيز أنيق</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 — BEANS
+══════════════════════════════════════════════ -->
+<section class="slide slide-beans" id="slide-3">
+  <div class="beans-left">
+    <div class="beans-origin-tag fade-in">04 — SINGLE ORIGINS & BLENDS</div>
+    <div class="beans-title-ar fade-in-up">محاصيل مسراب</div>
+    <div class="beans-title-en fade-in-up stagger-1">Mesrab Origins</div>
+
+    <div class="beans-category fade-in-up stagger-2">
+      <div class="beans-cat-label">محاصيل فاخرة</div>
+      <div class="beans-list">
+        <div class="bean-item"><span class="bean-name">كولومبيا هويلا — عنب</span><div class="bean-dot"></div></div>
+        <div class="bean-item"><span class="bean-name">سلاش فاخر (بلند)</span><div class="bean-dot"></div></div>
+      </div>
+    </div>
+
+    <div class="beans-category fade-in-up stagger-3">
+      <div class="beans-cat-label">أنواع المحاصيل</div>
+      <div class="beans-list">
+        <div class="bean-item"><span class="bean-name">كوالادا</span><div class="bean-dot"></div></div>
+        <div class="bean-item"><span class="bean-name">كرومي (إثيوبي)</span><div class="bean-dot"></div></div>
+        <div class="bean-item"><span class="bean-name">تشوكو (البرازيل)</span><div class="bean-dot"></div></div>
+        <div class="bean-item"><span class="bean-name">قوجي — شاكيسو (إثيوبيا)</span><div class="bean-dot"></div></div>
+        <div class="bean-item"><span class="bean-name">كولومبيا لونا</span><div class="bean-dot"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="beans-right">
+    <!-- 6 colored placeholder cells for the bean cards -->
+    <div class="bean-card fade-in" style="background:linear-gradient(135deg,#4a1942,#2d0f28);">
+      <div class="bean-card-info">
+        <div class="bean-card-name">قوجي — شاكيسو</div>
+        <div class="bean-card-detail">إثيوبيا • توت</div>
+      </div>
+    </div>
+    <div class="bean-card fade-in stagger-1" style="background:linear-gradient(135deg,#2d4a1a,#1a2d0f);">
+      <div class="bean-card-info">
+        <div class="bean-card-name">كولومبيا لونا</div>
+        <div class="bean-card-detail">كولومبيا • كراميل</div>
+      </div>
+    </div>
+    <div class="bean-card fade-in stagger-2" style="background:linear-gradient(135deg,#1a3a4a,#0f1e2d);">
+      <div class="bean-card-info">
+        <div class="bean-card-name">كرومي</div>
+        <div class="bean-card-detail">إثيوبيا • فراولة</div>
+      </div>
+    </div>
+    <div class="bean-card fade-in stagger-3" style="background:linear-gradient(135deg,#4a3a1a,#2d220f);">
+      <div class="bean-card-info">
+        <div class="bean-card-name">عنب</div>
+        <div class="bean-card-detail">كولومبيا • عسل</div>
+      </div>
+    </div>
+    <div class="bean-card fade-in stagger-4" style="background:linear-gradient(135deg,#3a1a1a,#200f0f);">
+      <div class="bean-card-info">
+        <div class="bean-card-name">كوالادا</div>
+        <div class="bean-card-detail">جوز هند • حلاوة</div>
+      </div>
+    </div>
+    <div class="bean-card fade-in stagger-5" style="background:linear-gradient(135deg,#2a1a3a,#160f20);">
+      <div class="bean-card-info">
+        <div class="bean-card-name">سلاش</div>
+        <div class="bean-card-detail">بلند فاخر • نعناع</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 — BOOTH
+══════════════════════════════════════════════ -->
+<section class="slide slide-booth" id="slide-4">
+  <div class="booth-top">
+    <div class="booth-label">MESRAB ROASTERY</div>
+    <div class="booth-number-label">05 — The Booth Experience</div>
+    <div class="booth-label" style="direction:rtl;">بوث مسراب</div>
+  </div>
+
+  <div class="booth-main">
+    <div class="booth-cell fade-in" style="background:linear-gradient(160deg,#1c1a18,#2a2318);">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.15;">
+        <span style="font-family:'Noto Naskh Arabic',serif;font-size:40px;color:white;">مسـ</span>
+      </div>
+    </div>
+    <div class="booth-cell center fade-in stagger-1" style="background:linear-gradient(180deg,#2a2318,#1a1612);">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(196,168,130,0.08) 0%,transparent 70%);"></div>
+      <div class="booth-overlay-title">
+        <div class="booth-title-ar">بوث مسراب</div>
+        <div class="booth-title-en">The Mesrab Booth</div>
+      </div>
+    </div>
+    <div class="booth-cell fade-in stagger-2" style="background:linear-gradient(160deg,#252018,#1a1612);">
+    </div>
+    <div class="booth-cell fade-in stagger-3" style="background:linear-gradient(160deg,#1a1612,#0f0d0b);">
+    </div>
+    <div class="booth-cell fade-in stagger-4" style="background:linear-gradient(160deg,#2a2318,#1a1612);">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.1;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--gold);font-style:italic;">M</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 6 — PACKAGES
+══════════════════════════════════════════════ -->
+<section class="slide slide-packages" id="slide-5">
+  <div class="packages-bg-gradient"></div>
+
+  <div style="width:100%;position:relative;z-index:2;">
+    <div class="packages-header fade-in-up">
+      <div class="packages-label">Catering Packages — باقات كيترنق</div>
+      <div class="packages-title-ar">باقات كيترنق مسراب</div>
+      <div class="packages-title-en">MESRAB CATERING PACKAGES</div>
+    </div>
+
+    <div class="packages-grid">
+      <!-- Small -->
+      <div class="pkg-card fade-in-up stagger-1">
+        <div class="pkg-tier">Small — صغيرة</div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price-label">تبدأ من</div>
+          <div class="pkg-price">800</div>
+          <div class="pkg-price-sar">ريال سعودي</div>
+        </div>
+        <div class="pkg-name-ar">باقة المناسبات الصغيرة</div>
+        <div class="pkg-features">
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">50 كوب قهوة مختصة متنوعة</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">15 كوب ماتشا</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">أصناف حلى مختارة</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">بارستا محترف وتجهيز أنيق</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medium — featured -->
+      <div class="pkg-card featured fade-in-up stagger-2">
+        <div class="pkg-badge">الأكثر طلباً</div>
+        <div class="pkg-tier">Medium — متوسطة</div>
+        <div class="pkg-price-wrap" style="border-color:rgba(196,168,130,0.25);">
+          <div class="pkg-price-label">تبدأ من</div>
+          <div class="pkg-price" style="color:var(--gold-light);">1900</div>
+          <div class="pkg-price-sar">ريال سعودي</div>
+        </div>
+        <div class="pkg-name-ar">باقة المناسبات المتوسطة</div>
+        <div class="pkg-features">
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot" style="opacity:0.8;background:var(--gold-light);"></div>
+            <div class="pkg-feature-text" style="color:rgba(245,240,232,0.8);">100 كوب قهوة مختصة متنوعة</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot" style="opacity:0.8;background:var(--gold-light);"></div>
+            <div class="pkg-feature-text" style="color:rgba(245,240,232,0.8);">30 كوب ماتشا</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot" style="opacity:0.8;background:var(--gold-light);"></div>
+            <div class="pkg-feature-text" style="color:rgba(245,240,232,0.8);">أصناف حلى مختارة</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot" style="opacity:0.8;background:var(--gold-light);"></div>
+            <div class="pkg-feature-text" style="color:rgba(245,240,232,0.8);">بارستا محترف وتجهيز أنيق</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Large -->
+      <div class="pkg-card fade-in-up stagger-3">
+        <div class="pkg-tier">Large — كبيرة</div>
+        <div class="pkg-price-wrap">
+          <div class="pkg-price-label">تبدأ من</div>
+          <div class="pkg-price">3500<span style="font-size:24px;"> +</span></div>
+          <div class="pkg-price-sar">ريال سعودي</div>
+        </div>
+        <div class="pkg-name-ar">باقة المناسبات الكبيرة</div>
+        <div class="pkg-features">
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">200 كوب فأكثر متنوعة</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">أصناف حلى مختارة</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">يوم كامل (أو حسب الاتفاق)</div>
+          </div>
+          <div class="pkg-feature">
+            <div class="pkg-feature-dot"></div>
+            <div class="pkg-feature-text">تقديم احترافي كامل</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — CONTACT
+══════════════════════════════════════════════ -->
+<section class="slide slide-contact" id="slide-6">
+  <div class="contact-left">
+    <div class="contact-left-number">06</div>
+    <div class="contact-brand-main fade-in-up">مسراب</div>
+    <div class="contact-brand-sub fade-in-up stagger-1">MESRAB ROASTERY</div>
+    <div style="width:40px;height:1px;background:var(--gold);opacity:0.3;margin:0 0 32px auto;" class="fade-in stagger-2"></div>
+    <p class="contact-tagline fade-in-up stagger-2">
+      نسعى إلى تقديم تجربة قهوة استثنائية في كل فعالية — احترافية، أناقة، وشغف.
+    </p>
+
+    <!-- SVG leopard outline -->
+    <svg class="contact-left-leopard" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" fill="white">
+      <ellipse cx="100" cy="100" rx="40" ry="55" opacity="0.4"/>
+      <ellipse cx="100" cy="200" rx="50" ry="80" opacity="0.35"/>
+      <ellipse cx="100" cy="55" rx="28" ry="32" opacity="0.5"/>
+      <ellipse cx="68" cy="270" rx="15" ry="45" opacity="0.3"/>
+      <ellipse cx="132" cy="270" rx="15" ry="45" opacity="0.3"/>
+      <circle cx="88" cy="52" r="5" opacity="0.3"/>
+      <circle cx="112" cy="52" r="5" opacity="0.3"/>
+      <circle cx="85" cy="120" r="4" opacity="0.2"/>
+      <circle cx="115" cy="115" r="4" opacity="0.2"/>
+      <circle cx="90" cy="155" r="5" opacity="0.2"/>
+      <circle cx="110" cy="160" r="4" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <div class="contact-right">
+    <div class="contact-section-label fade-in-up">معلومات التواصل</div>
+    <div class="contact-items">
+      <div class="contact-item fade-in-up stagger-1">
+        <div class="contact-item-label">PHONE — الجوال</div>
+        <div class="contact-item-value ltr">0543 141 550</div>
+      </div>
+      <div class="contact-item fade-in-up stagger-2">
+        <div class="contact-item-label">INSTAGRAM — انستجرام</div>
+        <div class="contact-item-value ltr">@MESRAB.SA</div>
+      </div>
+      <div class="contact-item fade-in-up stagger-3">
+        <div class="contact-item-label">TIKTOK — تيك توك</div>
+        <div class="contact-item-value ltr">@MESRAB.SA</div>
+      </div>
+    </div>
+    <a class="contact-cta fade-in-up stagger-4" href="tel:0543141550">
+      تواصل معنا
+      <span class="contact-cta-arrow">←</span>
+    </a>
+  </div>
+</section>
+
+<script>
+  // ── Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) *.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button, .nav-dot, .offering-card, .pkg-card, .bean-card, .booth-cell, .contact-cta').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+      ring.style.transform = 'translate(-50%, -50%) scale(1.5)';
+      ring.style.opacity = '0.3';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      ring.style.transform = 'translate(-50%, -50%) scale(1)';
+      ring.style.opacity = '0.6';
+    });
+  });
+
+  // ── Progress bar & Nav dots
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const progressBar = document.getElementById('progressBar');
+  const totalSlides = slides.length;
+
+  function updateNav() {
+    const scrollTop = window.scrollY;
+    const winH = window.innerHeight;
+    const currentSlide = Math.round(scrollTop / winH);
+    const progress = ((currentSlide) / (totalSlides - 1)) * 100;
+    progressBar.style.width = progress + '%';
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+
+  function goToSlide(idx) {
+    window.scrollTo({ top: idx * window.innerHeight, behavior: 'smooth' });
+  }
+
+  // ── Intersection Observer for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.fade-in-up, .fade-in').forEach(el => {
+          el.classList.add('visible');
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  slides.forEach(s => observer.observe(s));
+
+  // Trigger first slide immediately
+  document.querySelectorAll('#slide-0 .fade-in-up, #slide-0 .fade-in').forEach(el => {
+    setTimeout(() => el.classList.add('visible'), 200);
+  });
+
+  // ── Keyboard navigation
+  document.addEventListener('keydown', e => {
+    const curr = Math.round(window.scrollY / window.innerHeight);
+    if (e.key === 'ArrowDown' && curr < totalSlides - 1) goToSlide(curr + 1);
+    if (e.key === 'ArrowUp' && curr > 0) goToSlide(curr - 1);
+  });
+</script>
+</body>
+</html>
